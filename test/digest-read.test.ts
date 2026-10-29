@@ -35,7 +35,7 @@ describe('readNight', () => {
     const dir = mkdtempSync(join(tmpdir(), 'rig-'));
     writeFileSync(join(dir, '2026-01-01.jsonl'), '');
     writeFileSync(join(dir, '2026-01-02.jsonl'), 'nope\n{"at":1}\n[1]\n');
-    expect(readNight(dir, '2026-01-01')).toEqual({ night: '2026-01-01', rows: [], badLines: 0 });
-    expect(readNight(dir, '2026-01-02')).toEqual({ night: '2026-01-02', rows: [], badLines: 3 });
+    expect(readNight(dir, '2026-01-01')).toEqual({ night: '2026-01-01', rows: [], badLines: 0, counts: { ok: 0, retry: 0, fail: 0 } });
+    expect(readNight(dir, '2026-01-02')).toEqual({ night: '2026-01-02', rows: [], badLines: 3, counts: { ok: 0, retry: 0, fail: 0 } });
   });
 });
